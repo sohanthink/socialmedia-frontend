@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --main_bg: #d73a3a;
+}
+
+@font-face {
+  font-family: "Gilroy-Regular";
+  src: url(./assets/fonts/Gilroy-Regular.ttf);
+}

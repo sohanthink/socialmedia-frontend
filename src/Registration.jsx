@@ -2,7 +2,7 @@ import React from 'react'
 
 const Registration = () => {
     return (
-        <div>this is registration</div>
+        <div className='text-main_bg font-GilroyRegular'>this is registration</div>
     )
 }
 
