@@ -1,10 +1,25 @@
 import './App.css'
+import Registration from './Registration';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<Registration />} > </Route>
+    </>
+  )
+);
+
+
 function App() {
 
   return (
-    <>
-      <p className='bg-slate-400'>social media apploication</p>
-    </>
+    <RouterProvider router={router} />
   )
 }
 
