@@ -1,12 +1,30 @@
 import React from 'react'
 import AuthContents from '../components/AuthContents'
-import AuthForm from '../components/AuthForm'
+import logo from "../assets/logo/logo.png"
+import Image from '../components/Image'
 
 const Login = () => {
     return (
-        <div className='flex justify-center items-center h-screen gap-24'>
-            <div className='w-[40%]'><AuthContents /></div>
-            <div className='w-[25%]'><AuthForm /></div>
+        <div className='flex justify-center items-center h-screen gap-40'>
+            <div className='w-[35%]'><AuthContents
+                title="Login to start chitchat with your guy."
+                s_title="sohans chat is a full fledeged chatting app where you can chat with your personal person. anyone wont gonna disturb."
+                paragraph="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel placeat mollitia ipsam? Vel placeat mollitia ipsam?" /></div>
+            <div className='w-[20%]'>
+                <div className='py-20'>
+                    <div className='align-center justify-center flex'>
+                        <Image source={logo} className="w-24" alt="logo" />
+                    </div>
+                    <h3 className='text-center font-GilroyRegular mb-5'>Sohans Chat</h3>
+                    <h4 className="font-Gilroybold text-center mb-2 text-xl">Login</h4>
+                    <form className='space-y-3'>
+                        <input className='w-full border-dark border px-3 py-3 rounded-full' placeholder='Email or UserName' type="text" />
+                        <input className='w-full border-dark border px-3 py-3 rounded-full' placeholder='Password' type="text" />
+                        <button className='bg-dark px-4 py-2 rounded-full text-white block w-full'>Login</button>
+                        <h4 className='text-center font-GilroyRegular'>Not Registered? <u>Register here!!</u></h4>
+                    </form>
+                </div>
+            </div>
         </div>
     )
 }

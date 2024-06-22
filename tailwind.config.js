@@ -9,6 +9,7 @@ export default {
     },
     fontFamily: {
       GilroyRegular: ["Gilroy-Regular"],
+      Gilroybold: ["Gilroy-bold"],
     },
     extend: {
       screens: {
