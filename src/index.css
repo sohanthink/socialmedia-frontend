@@ -6,6 +6,7 @@
   --dark: #1e1e1e;
   --white: #fafafa;
   --secondary_color: #e1fda2;
+  --error: rgb(232, 11, 11);
 }
 
 @font-face {

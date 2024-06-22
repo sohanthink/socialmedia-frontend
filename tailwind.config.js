@@ -6,6 +6,7 @@ export default {
       dark: "var(--dark)",
       white: "var(--white)",
       secondary_color: "var(--secondary_color)",
+      error: "var(--error)",
     },
     fontFamily: {
       GilroyRegular: ["Gilroy-Regular"],
