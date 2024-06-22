@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --main_bg: #d73a3a;
+  --dark: #1e1e1e;
+  --white: #fafafa;
+  --secondary_color: #e1fda2;
 }
 
 @font-face {

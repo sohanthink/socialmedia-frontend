@@ -1,5 +1,6 @@
 import './App.css'
-import Registration from './Registration';
+import Login from './pages/Login';
+import Registration from './pages/registration/Registration';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,7 +11,8 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<Registration />} > </Route>
+      <Route path="/" element={<Login />} > </Route>
+      <Route path="/registration" element={<Registration />} > </Route>
     </>
   )
 );

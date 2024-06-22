@@ -3,12 +3,21 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
-      main_bg: "var(--main_bg)",
+      dark: "var(--dark)",
+      white: "var(--white)",
+      secondary_color: "var(--secondary_color)",
     },
     fontFamily: {
       GilroyRegular: ["Gilroy-Regular"],
     },
-    extend: {},
+    extend: {
+      screens: {
+        xs: "320px",
+      },
+      container: {
+        center: true,
+      },
+    },
   },
   plugins: [],
 };
