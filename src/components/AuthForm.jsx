@@ -3,8 +3,22 @@ import Image from './Image'
 import logo from '../assets/logo/logo.png'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useAddUserMutation } from '../features/users/api/authapi';
 
 const AuthForm = () => {
+
+    const [addUser, { isLoading }] = useAddUserMutation()
+
+    const registration = async () => {
+        const signUpMutation = await addUser({
+            firstName: formik.values.firstName,
+            lastName: formik.values.lastName,
+            email: formik.values.email,
+            userName: formik.values.userName,
+            password: formik.values.password
+        })
+    }
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -27,9 +41,10 @@ const AuthForm = () => {
                 .min(6, 'Min 6 Character required')
                 .required('Password Required'),
         }),
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        },
+        onSubmit: () => {
+            // console.log(signUpMutation.data);
+            registration()
+        }
     });
 
     console.log(formik);
