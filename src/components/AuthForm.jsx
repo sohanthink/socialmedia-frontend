@@ -3,11 +3,11 @@ import Image from './Image'
 import logo from '../assets/logo/logo.png'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useAddUserMutation } from '../features/api/authapi';
+import { useAddUserMutation } from '../features/api/authApi';
 
 const AuthForm = () => {
 
-    const [addUser, { isLoading }] = useAddUserMutation()
+    const [addUser, { isLoading, isSuccess, isError, error }] = useAddUserMutation()
 
     const registration = async () => {
         const signUpMutation = await addUser({
@@ -17,6 +17,7 @@ const AuthForm = () => {
             userName: formik.values.userName,
             password: formik.values.password
         })
+        console.log(signUpMutation.data);
     }
 
     const formik = useFormik({
