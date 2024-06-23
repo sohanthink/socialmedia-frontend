@@ -4,20 +4,28 @@ import logo from '../assets/logo/logo.png'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useAddUserMutation } from '../features/api/authApi';
+import { Link } from 'react-router-dom';
 
 const AuthForm = () => {
 
-    const [addUser, { isLoading, isSuccess, isError, error }] = useAddUserMutation()
+    const [addUser, { isLoading, isSuccess, isError, error }] = useAddUserMutation();
 
     const registration = async () => {
-        const signUpMutation = await addUser({
-            firstName: formik.values.firstName,
-            lastName: formik.values.lastName,
-            email: formik.values.email,
-            userName: formik.values.userName,
-            password: formik.values.password
-        })
-        console.log(signUpMutation.data);
+        try {
+            const signUpMutation = await addUser({
+                firstName: formik.values.firstName,
+                lastName: formik.values.lastName,
+                email: formik.values.email,
+                userName: formik.values.userName,
+                password: formik.values.password
+            })
+            console.log(signUpMutation?.data?.data);
+            console.log(signUpMutation.error?.data?.message);
+
+        } catch (error) {
+            console.error('Error during registration:', error);
+
+        }
     }
 
     const formik = useFormik({
@@ -43,12 +51,11 @@ const AuthForm = () => {
                 .required('Password Required'),
         }),
         onSubmit: () => {
-            // console.log(signUpMutation.data);
             registration()
         }
     });
 
-    console.log(formik);
+    // console.log(formik);
 
     return (
         <div className='py-20'>
@@ -125,7 +132,7 @@ const AuthForm = () => {
                 ) : null}
 
                 <button type='submit' className='bg-dark px-4 py-2 rounded-full text-white block w-full'>Register</button>
-                <h4 className='text-center font-GilroyRegular'>Already Registered? <u>Login here!!</u></h4>
+                <h4 className='text-center font-GilroyRegular'>Already Registered? <Link to="/"><u>Login here!!</u></Link></h4>
             </form>
         </div>
     )
