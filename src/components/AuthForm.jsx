@@ -3,7 +3,7 @@ import Image from './Image'
 import logo from '../assets/logo/logo.png'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useAddUserMutation } from '../features/users/api/authapi';
+import { useAddUserMutation } from '../features/api/authapi';
 
 const AuthForm = () => {
 
