@@ -26,10 +26,14 @@ const Login = () => {
             if (signInMutation?.data) {
                 toast.success(signInMutation?.data?.message)
                 formik.resetForm();
+
                 dispatch(loggedInUsers(signInMutation.data.userDetails))
                 localStorage.setItem("user", JSON.stringify(signInMutation.data.userDetails))
-                // console.log(signInMutation?.data?.userDetails);
-                // navigate('/home')
+
+                setTimeout(() => {
+                    navigate('/home')
+                }, 3000);
+
             } else {
                 const errmsg = signInMutation.error?.data?.message
                 toast.error(errmsg)
