@@ -3,11 +3,62 @@ import AuthContents from '../components/AuthContents'
 import logo from "../assets/logo/logo.png"
 import Image from '../components/Image'
 import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useLoginUserMutation } from '../features/api/authApi'
+import toast, { Toaster } from 'react-hot-toast';
+import { useFormik } from 'formik'
+import * as Yup from 'yup';
 
 const Login = () => {
+    const [loginUser] = useLoginUserMutation();
+    const navigate = useNavigate()
+
+    const login = async (values) => {
+        console.log("aiche");
+        try {
+            const signInMutation = await loginUser({
+                email: formik.values.email,
+                password: formik.values.password
+            })
+
+            console.log(signInMutation);
+
+            if (signInMutation?.data?.data) {
+                toast.success(signInMutation?.data.message)
+                formik.resetForm();
+                navigate('/home')
+            } else {
+                const errmsg = signInMutation.error?.data?.message
+                toast.error(errmsg)
+            }
+
+
+        } catch (error) {
+            console.error('Error during registration:', error);
+        }
+    }
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+        validationSchema: Yup.object({
+            email: Yup.string().email('Invalid email address').required('Email Required'),
+            password: Yup.string()
+                .max(15, 'Must be 15 characters or less')
+                .min(6, 'Min 6 Character required')
+                .required('Password Required'),
+        }),
+        onSubmit: async (values) => {
+            await login(values);
+        }
+    });
+    // console.log(formik);
+
     return (
         <>
+            <Toaster />
             <Helmet>
                 <title>Login</title>
             </Helmet>
@@ -24,10 +75,37 @@ const Login = () => {
                         </div>
                         <h3 className='text-center font-GilroyRegular mb-5'>Sohans Chat</h3>
                         <h4 className="font-Gilroybold text-center mb-2 text-xl">Login</h4>
-                        <form className='space-y-3'>
-                            <input className='w-full border-dark border px-3 py-3 rounded-full' placeholder='Email or UserName' type="text" />
-                            <input className='w-full border-dark border px-3 py-3 rounded-full' placeholder='Password' type="text" />
-                            <button className='bg-dark px-4 py-2 rounded-full text-white block w-full'>Login</button>
+
+                        <form onSubmit={formik.handleSubmit} className='space-y-3'>
+                            <input className='w-full border-dark border px-3 py-3 rounded-full'
+                                placeholder='Email'
+                                type="email"
+                                name='email'
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.email}
+                                autoComplete='off'
+                            />
+
+                            {formik.touched.email && formik.errors.email ? (
+                                <p className='text-error font-GilroyRegular'>{formik.errors.email}</p>
+                            ) : null}
+
+                            <input className='w-full border-dark border px-3 py-3 rounded-full'
+                                placeholder='Password'
+                                type="password"
+                                name='password'
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.password}
+                                autoComplete='off'
+                            />
+                            {formik.touched.password && formik.errors.password ? (
+                                <p className='text-error font-GilroyRegular'>{formik.errors.password}</p>
+                            ) : null}
+
+                            <button type='submit' className='bg-dark px-4 py-2 rounded-full text-white block w-full'>Login</button>
+
                             <h4 className='text-center font-GilroyRegular'>Not Registered? <Link to="/registration"><u>Register here!!</u></Link></h4>
                         </form>
                     </div>

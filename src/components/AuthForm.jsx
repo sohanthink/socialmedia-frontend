@@ -4,12 +4,14 @@ import logo from '../assets/logo/logo.png'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useAddUserMutation } from '../features/api/authApi';
-import { Link } from 'react-router-dom';
+import { Link, redirect, useNavigate, } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const AuthForm = () => {
 
-    const [addUser, { isLoading, isSuccess, isError, error }] = useAddUserMutation();
-
+    const [addUser, { isLoading, isSuccess, isError, error, data }] = useAddUserMutation();
+    const navigate = useNavigate()
     const registration = async () => {
         try {
             const signUpMutation = await addUser({
@@ -19,8 +21,17 @@ const AuthForm = () => {
                 userName: formik.values.userName,
                 password: formik.values.password
             })
-            console.log(signUpMutation?.data?.data);
-            console.log(signUpMutation.error?.data?.message);
+
+            if (signUpMutation?.data?.data) {
+                toast.success(signUpMutation?.data.message)
+                setTimeout(() => {
+                    navigate('/')
+                }, 4000);
+            } else {
+                const errmsg = signUpMutation.error?.data?.message
+                toast.error(errmsg)
+            }
+
 
         } catch (error) {
             console.error('Error during registration:', error);
@@ -51,7 +62,8 @@ const AuthForm = () => {
                 .required('Password Required'),
         }),
         onSubmit: () => {
-            registration()
+            registration();
+            formik.resetForm();
         }
     });
 
@@ -59,6 +71,7 @@ const AuthForm = () => {
 
     return (
         <div className='py-20'>
+            <Toaster />
             <div className='align-center justify-center flex'>
                 <Image source={logo} className="w-24" alt="logo" />
             </div>
