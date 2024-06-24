@@ -8,25 +8,28 @@ import { useLoginUserMutation } from '../features/api/authApi'
 import toast, { Toaster } from 'react-hot-toast';
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux'
+import { loggedInUsers } from '../features/users/authSlice'
 
 const Login = () => {
-    const [loginUser] = useLoginUserMutation();
+    const [loginUser, { isLoading }] = useLoginUserMutation();
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const login = async (values) => {
-        console.log("aiche");
         try {
             const signInMutation = await loginUser({
                 email: formik.values.email,
                 password: formik.values.password
             })
 
-            console.log(signInMutation);
-
-            if (signInMutation?.data?.data) {
-                toast.success(signInMutation?.data.message)
+            if (signInMutation?.data) {
+                toast.success(signInMutation?.data?.message)
                 formik.resetForm();
-                navigate('/home')
+                dispatch(loggedInUsers(signInMutation.data.userDetails))
+                localStorage.setItem("user", JSON.stringify(signInMutation.data.userDetails))
+                // console.log(signInMutation?.data?.userDetails);
+                // navigate('/home')
             } else {
                 const errmsg = signInMutation.error?.data?.message
                 toast.error(errmsg)
@@ -104,7 +107,13 @@ const Login = () => {
                                 <p className='text-error font-GilroyRegular'>{formik.errors.password}</p>
                             ) : null}
 
-                            <button type='submit' className='bg-dark px-4 py-2 rounded-full text-white block w-full'>Login</button>
+                            {
+                                !isLoading ?
+                                    <button type='submit' className='bg-dark px-4 py-2 rounded-full text-white block w-full'>Login</button>
+                                    :
+                                    <button disabled className='bg-dark px-4 py-2 rounded-full text-white block w-full'>Loading</button>
+                            }
+
 
                             <h4 className='text-center font-GilroyRegular'>Not Registered? <Link to="/registration"><u>Register here!!</u></Link></h4>
                         </form>

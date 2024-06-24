@@ -23,6 +23,7 @@ const AuthForm = () => {
             })
 
             if (signUpMutation?.data?.data) {
+
                 toast.success(signUpMutation?.data.message)
                 setTimeout(() => {
                     navigate('/')
@@ -143,8 +144,12 @@ const AuthForm = () => {
                 {formik.touched.password && formik.errors.password ? (
                     <p className='text-error font-GilroyRegular'>{formik.errors.password}</p>
                 ) : null}
-
-                <button type='submit' className='bg-dark px-4 py-2 rounded-full text-white block w-full'>Register</button>
+                {
+                    !isLoading ?
+                        <button type='submit' className='bg-dark px-4 py-2 rounded-full text-white block w-full'>Register</button>
+                        :
+                        <button disabled className='bg-dark px-4 py-2 rounded-full text-white block w-full'>Loading</button>
+                }
                 <h4 className='text-center font-GilroyRegular'>Already Registered? <Link to="/"><u>Login here!!</u></Link></h4>
             </form>
         </div>
