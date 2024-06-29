@@ -1,11 +1,19 @@
 import React from 'react'
 import Profile from './profile'
+import { Data } from './Data'
+import LeftMenu from './LeftMenu'
 
 const Left = () => {
     return (
         <>
             <Profile />
-            <div>menu</div>
+            <div className='mt-2 bg-white py-3'>
+                {
+                    Data.map((data, index) => (
+                        <LeftMenu key={index} data={data} />
+                    ))
+                }
+            </div>
         </>
     )
 }
