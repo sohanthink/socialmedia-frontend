@@ -16,7 +16,7 @@ const Home = () => {
             </Helmet>
 
             <div className='bg-[#D9D9D9] font-GilroyRegular'>
-                <div className='mx-20'>
+                <div className='bg-white'>
                     <TopBar />
                 </div>
 

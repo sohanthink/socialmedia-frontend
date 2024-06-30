@@ -1,5 +1,5 @@
 import React from 'react'
-import Profile from './profile'
+import Profile from './Profile'
 import { Data } from './Data'
 import LeftMenu from './LeftMenu'
 
