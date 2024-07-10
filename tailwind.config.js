@@ -8,6 +8,7 @@ export default {
       secondary_color: "var(--secondary_color)",
       error: "var(--error)",
       link: "var(--link)",
+      gray: "var(--gray)",
     },
     fontFamily: {
       GilroyRegular: ["Gilroy-Regular"],

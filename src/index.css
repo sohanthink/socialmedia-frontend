@@ -8,6 +8,7 @@
   --secondary_color: #e1fda2;
   --error: rgb(232, 11, 11);
   --link: rgb(79, 76, 246);
+  --gray: rgba(174, 173, 184, 0.882);
 }
 
 @font-face {

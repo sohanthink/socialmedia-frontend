@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import NotLoggedInUser from './privateRouter/NotLoggedInUser';
 import LoggedInUser from './privateRouter/LoggedInUser';
+import RootLayout from './components/RootLayout';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +20,9 @@ const router = createBrowserRouter(
         <Route path="/registration" element={<Registration />} > </Route>
       </Route>
       <Route element={<LoggedInUser />}>
-        <Route path="/home" element={<Home />} > </Route>
+        <Route element={<RootLayout />}>
+          <Route path="/home" element={<Home />} />
+        </Route>
       </Route>
     </Route>
   )
