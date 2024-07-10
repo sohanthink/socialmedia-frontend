@@ -19,3 +19,8 @@
   font-family: "Gilroy-bold";
   src: url(./assets/fonts/Gilroy-Bold.ttf);
 }
+
+@font-face {
+  font-family: "Gilroy-extrabold";
+  src: url(./assets/fonts/Gilroy-ExtraBold.ttf);
+}

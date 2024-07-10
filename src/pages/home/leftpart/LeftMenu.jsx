@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import SettingOptions from './SettingOptions';
 
 const LeftMenu = ({ data }) => {
     const [show, setShow] = useState(false);
     const Icon = data.icon;
 
     const handleClick = () => {
-        console.log("clicked");
         setShow(!show);
     };
 
@@ -21,7 +21,8 @@ const LeftMenu = ({ data }) => {
                     <p>{data.title}</p>
                 </div>
             </div>
-            {show && <div>showing things easily</div>}
+
+            {show && <SettingOptions />}
         </>
     );
 

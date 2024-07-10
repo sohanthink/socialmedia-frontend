@@ -12,6 +12,7 @@ export default {
     fontFamily: {
       GilroyRegular: ["Gilroy-Regular"],
       Gilroybold: ["Gilroy-bold"],
+      GilroyExtrabold: ["Gilroy-extrabold"],
     },
     extend: {
       screens: {
