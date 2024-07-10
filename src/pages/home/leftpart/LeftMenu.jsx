@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SettingOptions from './SettingOptions';
+import clickOutside from '../../../function/clickOutside';
 
 const LeftMenu = ({ data }) => {
     const [show, setShow] = useState(false);
+    const outClicked = useRef(null)
     const Icon = data.icon;
 
     const handleClick = () => {
         setShow(!show);
     };
+
+    clickOutside(outClicked, () => {
+        setShow(false)
+    })
+
 
     const settingDropdown = (
         <>
@@ -22,7 +29,9 @@ const LeftMenu = ({ data }) => {
                 </div>
             </div>
 
-            {show && <SettingOptions />}
+            <div ref={outClicked}>
+                {show && <SettingOptions />}
+            </div>
         </>
     );
 

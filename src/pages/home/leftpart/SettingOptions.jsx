@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Moon } from '../../../svg/Moon'
+import { Logout } from '../../../svg/Logout'
 
 const SettingOptions = () => {
     const [visible, setVisible] = useState(false)
@@ -12,17 +14,37 @@ const SettingOptions = () => {
 
     return (
         <div className='flex-col gap-5 bg-white font-GilroyExtrabold'>
-            <div onClick={handleClick} className='px-5 py-2 mb-2 mx-2 hover:text-link hover:font-extrabold transition-all ease-in cursor-pointer'>Display & Accessibility</div>
+            <div>
+                <div onClick={handleClick} className='px-5 py-2 mb-2 mx-2 hover:text-link hover:font-extrabold transition-all ease-in cursor-pointer flex gap-3'>
+                    <Moon />
+                    Display & Accessibility
+                </div>
+                {
+                    visible &&
+                    <ul className='flex gap-3 ps-7 py-2 items-start'>
+                        <li className='pt-1'><Moon /></li>
+                        <li>
+                            <span className='font-GilroyExtrabold'>Dark Mode</span>
+                            <p className='text-sm font-GilroyRegular'>Lorem ipsum dolor, sit amet consectetur adipisi Repellat.</p>
+                            <form className='pe-4 pt-3' action="">
+                                <div className='flex justify-between'>
+                                    <label htmlFor="on">on</label>
+                                    <input id='on' name='darkMode' type="radio" />
+                                </div>
+                                <div className='flex justify-between'>
+                                    <label htmlFor="off">off</label>
+                                    <input id='off' name='darkMode' type="radio" />
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                }
+            </div>
 
-            {
-                visible &&
-                <ul>
-                    <li>nice</li>
-                    <li>nice</li>
-                </ul>
-            }
-
-            <div className='px-5 py-2 mb-2 mx-2 hover:text-link hover:font-extrabold transition-all ease-in cursor-pointer'>Logout</div>
+            <div className='px-5 py-2 mb-2 mx-2 hover:text-link hover:font-extrabold transition-all ease-in cursor-pointer flex list-none gap-3'>
+                <li><Logout /></li>
+                <li>Logout</li>
+            </div>
 
 
         </div>
