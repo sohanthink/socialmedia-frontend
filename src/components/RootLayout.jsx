@@ -6,7 +6,7 @@ import { TopBar } from '../pages/home/topbar/TopBar'
 
 const RootLayout = () => {
     return (
-        <div className='bg-[#D9D9D9] font-GilroyRegular'>
+        <div className='bg-[#f1f0f0] font-GilroyRegular'>
             <div className='bg-white'>
                 <TopBar />
             </div>

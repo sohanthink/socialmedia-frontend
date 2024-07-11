@@ -1,6 +1,7 @@
 import React from 'react'
 import RightFriends from './RightFriends'
 
+
 const Right = () => {
     return (
         <>

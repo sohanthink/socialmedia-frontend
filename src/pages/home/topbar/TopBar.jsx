@@ -16,7 +16,7 @@ export const TopBar = () => {
 
     return (
         <div className='mb-2 mx-20 flex items-center justify-between'>
-            <div><Image className="h-20 w-20" source={logo} /></div>
+            <div><Image className="h-20 w-20 object-cover bg-cover" source={logo} /></div>
             <div className='flex bg-secondary_color gap-3 p-3 rounded-3xl w-60' onClick={() => setShow(true)}>
                 <div><SearchIcon /></div>
                 <div><input className='bg-secondary_color focus:outline-none' /></div>
