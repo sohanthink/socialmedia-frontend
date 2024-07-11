@@ -25,11 +25,11 @@ const LeftMenu = ({ data }) => {
     const settingDropdown = (
         <>
             <div onClick={handleClick}
-                className={`flex gap-5 p-5 mb-3 mx-2 hover:bg-dark hover:text-white transition-all ease-in rounded-full cursor-pointer ${show && 'bg-dark text-white'}`}>
+                className={`flex md:gap-5 md:p-5 md:mb-3 md:mx-2 hover:bg-dark hover:text-white transition-all ease-in rounded-full cursor-pointer ${show && 'bg-dark text-white'}`}>
                 <div>
                     <Icon />
                 </div>
-                <div>
+                <div className='hidden md:block'>
                     <p>{data.title}</p>
                 </div>
             </div>
@@ -41,13 +41,12 @@ const LeftMenu = ({ data }) => {
     );
 
     const regularLink = (
-        <NavLink
-            to={data.to}
-            className='flex gap-5 bg-white p-5 mb-3 mx-2 hover:bg-dark hover:text-white transition-all ease-in rounded-full' >
+        <NavLink to={data.to}
+            className='flex p-2 md:gap-5 bg-white md:p-5 md:mb-3 md:mx-2 hover:bg-dark hover:text-white transition-all ease-in rounded-full' >
             <div>
                 <Icon />
             </div>
-            <div>
+            <div className='hidden md:block'>
                 <p>{data.title}</p>
             </div>
         </NavLink>
@@ -55,8 +54,14 @@ const LeftMenu = ({ data }) => {
 
     return (
         <>
-            {data.title === 'Settings' ? settingDropdown : regularLink}
-            {/* {settingDropdown} */}
+            <div className='hidden md:block'>
+                {data.title === 'Settings' ? settingDropdown : regularLink}
+            </div>
+            <div className='md:hidden'>
+                {
+                    regularLink
+                }
+            </div>
         </>
     );
 };

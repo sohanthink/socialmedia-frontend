@@ -7,14 +7,14 @@ import { TopBar } from '../pages/home/topbar/TopBar'
 const RootLayout = () => {
     return (
         <div className='bg-[#f1f0f0] font-GilroyRegular'>
-            <div className='bg-white'>
+            <div className='bg-white py-2 md:py-0'>
                 <TopBar />
             </div>
 
-            <div className='grid grid-cols-[1fr,3fr,1fr] mx-20 gap-3'>
-                <div><Left /></div>
+            <div className='grid grid-cols-1 md:grid-cols-[1fr,3fr,1fr] mx-5 md:mx-20 gap-3'>
+                <div className='hidden md:block'><Left /></div>
                 <div><Outlet /></div>
-                <div><Right /></div>
+                <div className='hidden md:block'><Right /></div>
             </div>
         </div>
     )

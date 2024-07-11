@@ -9,7 +9,7 @@ const SearchBox = () => {
     }, [])
 
     return (
-        <div className='bg-secondary_color p-3 rounded-3xl w-60  h-96'>
+        <div className='bg-secondary_color p-3 rounded-3xl w-60 h-96'>
             <div className='flex gap-3 border p-2 rounded-3xl'>
                 <div><SearchIcon /></div>
                 <div>

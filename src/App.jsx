@@ -11,6 +11,8 @@ import {
 import NotLoggedInUser from './privateRouter/NotLoggedInUser';
 import LoggedInUser from './privateRouter/LoggedInUser';
 import RootLayout from './components/RootLayout';
+import 'swiper/css';
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
