@@ -1,8 +1,9 @@
 import React from 'react'
+import PostBar from './PostBar'
 
 const Post = () => {
     return (
-        <div>Post</div>
+        <PostBar />
     )
 }
 

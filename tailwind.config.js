@@ -9,6 +9,7 @@ export default {
       error: "var(--error)",
       link: "var(--link)",
       gray: "var(--gray)",
+      blur: "var(--blur)",
     },
     fontFamily: {
       GilroyRegular: ["Gilroy-Regular"],
