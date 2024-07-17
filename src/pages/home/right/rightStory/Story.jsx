@@ -13,7 +13,7 @@ const Story = () => {
                         delay: 2500
                     }}
                     onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
+                // onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide className='p-1'>
                         <div className="h-52 bg-cover rounded-md" style={{
