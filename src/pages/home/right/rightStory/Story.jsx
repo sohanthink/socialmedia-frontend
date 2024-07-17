@@ -9,8 +9,11 @@ const Story = () => {
                 <Swiper className='flex gap-1'
                     spaceBetween={10}
                     slidesPerView={2}
+                    autoplay={{
+                        delay: 2500
+                    }}
                     onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
+                // onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide className='p-1'>
                         <div className="h-52 bg-cover rounded-md" style={{

@@ -5,10 +5,11 @@
 :root {
   --dark: #1e1e1e;
   --white: #fafafa;
-  --secondary_color: #e1fda2;
+  --secondary_color: #46be60;
   --error: rgb(232, 11, 11);
   --link: rgb(79, 76, 246);
   --gray: rgba(174, 173, 184, 0.882);
+  --blur: rgba(12, 12, 13, 0.681);
 }
 
 @font-face {
