@@ -7,8 +7,6 @@ import Emoji from './Emoji';
 const PostPopup = ({ onClose }) => {
     const [text, setText] = useState('');
     const textRef = useRef(null);
-
-
     return (
         <div className='absolute top-0 left-0 w-full h-screen bg-blur z-10 flex flex-col items-center justify-center'>
             <div className='w-4/5 md:w-1/3 bg-white p-5 flex justify-between border-b border-gray'>

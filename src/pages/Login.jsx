@@ -41,7 +41,7 @@ const Login = () => {
 
 
         } catch (error) {
-            console.error('Error during registration:', error);
+            console.error('Error during Login:', error);
         }
     }
 

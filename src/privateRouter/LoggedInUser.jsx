@@ -8,4 +8,4 @@ const LoggedInUser = () => {
     return userInfo ? <Outlet /> : <Login />
 }
 
-export default LoggedInUser
+export default LoggedInUser 

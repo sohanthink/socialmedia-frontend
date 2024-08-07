@@ -1,15 +1,26 @@
 import React, { useState } from 'react'
 import { Moon } from '../../../svg/Moon'
 import { Logout } from '../../../svg/Logout'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { logggedOutUsers } from '../../../features/users/authSlice'
 
 const SettingOptions = () => {
     const [visible, setVisible] = useState(false)
+    const dispatch = useDispatch()
+    const navigate = useNavigate
 
     const handleClick = () => {
         setVisible(true)
         if (visible) {
             setVisible(false)
         }
+    }
+
+    const handleLogOut = () => {
+        localStorage.removeItem("user")
+        dispatch(logggedOutUsers())
+        navigate("/login")
     }
 
     return (
@@ -41,7 +52,7 @@ const SettingOptions = () => {
                 }
             </div>
 
-            <div className='px-5 py-2 mb-2 mx-2 hover:text-link hover:font-extrabold transition-all ease-in cursor-pointer flex list-none gap-3'>
+            <div onClick={handleLogOut} className='px-5 py-2 mb-2 mx-2 hover:text-link hover:font-extrabold transition-all ease-in cursor-pointer flex list-none gap-3'>
                 <li><Logout /></li>
                 <li>Logout</li>
             </div>
